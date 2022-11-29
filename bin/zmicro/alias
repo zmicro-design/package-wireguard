@@ -5,11 +5,11 @@ help() {
   echo "  zmicro wireguard <args ...>"
   echo ""
 
-  wireguard --help
+  wg --help
 }
 
 version() {
-  wireguard --version
+  wg version
 }
 
 core() {
@@ -21,7 +21,7 @@ core() {
     version
     ;;
   *)
-    wireguard "$@"
+    wg "$@"
     ;;
   esac
 }
