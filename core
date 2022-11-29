@@ -18,14 +18,15 @@ install() {
   local tmp_file="$name.tar.gz"
   local bin_file="./$name"
 
- 
-  if [ "$(os::is_ubuntu)" = "true" ]; then
+  # MacOS/brew
+  if [ "$(os::is_macos)" = "true" ]; then
+    pm install wireguard-tools
+  elif [ "$(os::is_ubuntu)" = "true" ]; then
     pm install wireguard
   elif [ "$(os::is_centos)" = "true" ]; then
     log::error "[$(timestamp)] not supported CentOS, please install according to https://www.wireguard.com/install/"
     return 1
   else
-    # MacOS/brew
     # Fedora
     # Alpine
     pm install wireguard-tools
