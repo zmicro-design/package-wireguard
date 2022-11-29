@@ -1,0 +1,5 @@
+#!/bin/bash
+
+export PACKAGE_CORE_NAME="wireguard"
+export PACKAGE_CORE_VERSION=v0.0.0
+export PACKAGE_CORE_RELEASE_DOWNLOAD="https://github.com/9seconds/wireguard/releases/download"

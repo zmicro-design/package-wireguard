@@ -1,0 +1,35 @@
+#!/bin/bash
+
+install() {
+  # prepare vars
+  local name="$PACKAGE_CORE_NAME"
+
+  log::info "[$(timestamp)][package][$name] preparing ..."
+
+  # get system os/arch
+  local arch="$PACKAGE_OS_ARCH"
+  local kernel="$PACKAGE_OS_KERNEL"
+  local platform="$PACKAGE_OS_PLATFORM"
+  # usr_bin_dir
+  local usr_bin_dir="$PACKAGE_USER_BIN_DIR"
+  local tmp_dir="$PACKAGE_TMP_DIR"
+
+  # files
+  local tmp_file="$name.tar.gz"
+  local bin_file="./$name"
+
+ 
+  if [ "$(os::is_ubuntu)" = "true" ]; then
+    pm install wireguard
+  elif [ "$(os::is_centos)" = "true" ]; then
+    log::error "[$(timestamp)] not supported CentOS, please install according to https://www.wireguard.com/install/"
+    return 1
+  else
+    # MacOS/brew
+    # Fedora
+    # Alpine
+    pm install wireguard-tools
+  fi
+}
+
+export -f install
